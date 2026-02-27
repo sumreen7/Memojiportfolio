@@ -1,5 +1,4 @@
-# Portfolio - Rakshith Dharmappa
-
+# Portfolio - Fathima Sumreen
 A modern, interactive portfolio built with Next.js, featuring an AI-powered chat interface using Groq.
 
 ## Features
