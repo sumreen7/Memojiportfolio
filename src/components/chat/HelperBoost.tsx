@@ -74,7 +74,7 @@ const questionsByCategory = [
       'What are your passions?',
       'How did you get started in tech?',
       'Where do you see yourself in 5 years?',
-    ],
+    ].filter(Boolean), // Ensure all questions are valid strings
   },
   {
     id: 'professional',
@@ -86,13 +86,13 @@ const questionsByCategory = [
       'Where are you working now?',
       'Why should I hire you?',
       "What's your educational background?",
-    ],
+    ].filter(Boolean),
   },
   {
     id: 'projects',
     name: 'Projects',
     icon: CodeIcon,
-    questions: ['What projects are you most proud of?'],
+    questions: ['What projects are you most proud of?'].filter(Boolean),
   },
   {
     id: 'skills',
@@ -101,7 +101,7 @@ const questionsByCategory = [
     questions: [
       'What are your skills?',
       'How was your experience at École 42?',
-    ],
+    ].filter(Boolean),
   },
   {
     id: 'experience',
@@ -112,7 +112,7 @@ const questionsByCategory = [
       'Tell me about your professional background',
       'What companies have you worked for?',
       'What are your career achievements?',
-    ],
+    ].filter(Boolean),
   },
   {
     id: 'contact',
@@ -122,7 +122,7 @@ const questionsByCategory = [
       'How can I reach you?',
       "What kind of project would make you say 'yes' immediately?",
       'Where are you located?',
-    ],
+    ].filter(Boolean),
   },
 ];
 
@@ -154,6 +154,11 @@ export default function HelperBoost({
   const [open, setOpen] = useState(false);
 
   const handleQuestionClick = (questionKey: string) => {
+    if (!questions[questionKey as keyof typeof questions]) {
+      console.error(`Invalid question key: ${questionKey}`);
+      return; // Prevent further execution if the question key is invalid
+    }
+
     if (submitQuery) {
       submitQuery(questions[questionKey as keyof typeof questions]);
       // Clear the input after submitting
@@ -337,6 +342,11 @@ interface QuestionItemProps {
 
 function QuestionItem({ question, onClick, isSpecial }: QuestionItemProps) {
   const [isHovered, setIsHovered] = useState(false);
+
+  if (!question || typeof question !== 'string') {
+    console.error('Invalid question:', question);
+    return null; // Prevent rendering if question is invalid
+  }
 
   return (
     <motion.button

@@ -8,20 +8,21 @@ export const getPresentation = tool({
   execute: async (params = {}) => {
     return {
       personal: {
-        name: "Rakshith Dharmappa",
-        age: 26,
-        profession: "Generative AI Engineer at Reliance Jio",
-        specialization: "LLM fine-tuning, RAG systems, and multi-agent architectures",
+        name: "Fathima Sumreen",
+        age: 24,
+        journey: "Started as a software engineer at Salesforce building AI agents and automation systems, now at CMU sharpening my product and data skills to build things people actually love using",
+        specialization: "AI-powered product development, data analytics, LLM fine-tuning, and enterprise automation",
         lifestyle: {
-          diet: "Vegetarian",
-          philosophy: "I am a vegetarian, but I do not impose anyone to be a vegan or to change their food style",
-          animals: "I love animals deeply"
+          diet: "foody, love trying new cuisines and exploring food cultures",
+          philosophy: "I believe in consistent and continuous learning, embracing challenges, while finding joy in the journey of growth and discovery",
+          animals: "I live with a dog and 2 cats, and I am a big animal person in general"
         },
         spirituality: {
-          beliefs: "Deep spiritual beliefs in Krishna and Shiva",
-          description: "I have very deep spiritual beliefs (Krishna and Shiva)"
+          beliefs: "I am an atheist",
+          description: "I do not believe in any religion, but I do believe in the power of human connection, empathy, and kindness. I believe that we are all connected and that we should treat each other with respect and compassion."
         },
-        passion: "Making AI actually work in production environments, not just research papers"
+        passion: "Bridging the gap between technical complexity and real user impact — I care deeply about building products that are intelligent, intuitive, and actually solve problems",
+        funFact: "I've been professionally playing tennis since I was 12, and I won my first national level tournament when I was 16!",
       }
     };
   },

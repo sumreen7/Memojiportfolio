@@ -3,74 +3,115 @@ import { z } from 'zod';
 
 export const getExperience = tool({
   description:
-    'Get detailed information about Rakshith\'s work experience, professional background, and career timeline. Use this when users ask about work history, jobs, experience, or professional background.',
+    "Get detailed information about Fathima Sumreen's professional experience — from engineering at Salesforce to founding AI startup Naviyo, research publications, and internships. Use this when users ask about work history, roles, startup, research, or career journey.",
   parameters: z.object({
-    detail: z.enum(['current', 'previous', 'all']).optional().describe('Specify which experience to focus on: current job, previous jobs, or all experience')
+    detail: z.enum(['current', 'previous', 'startup', 'research', 'all'])
+      .optional()
+      .describe('Specify which experience to focus on: current startup, previous roles, research, or all')
   }).optional(),
   execute: async (params = {}) => {
     const { detail = 'all' } = params;
-    
+
     const experienceData = {
       current: {
-        title: "Generative AI Engineer",
-        company: "Reliance Jio Infocom",
-        period: "May 2025 - Present",
-        location: "Dallas, Texas, United States",
-        achievements: [
-          "Architected O-TAP Co-Pilot using multi-agent RAG system with CrewAI and LangGraph, reducing NOC engineer workload by 40%",
-          "Designed patent-pending LLM architecture for telecom diagram generation using sub-10B parameter models, outperforming GPT-4 and Claude while reducing inference costs by 60%",
-          "Implemented on-premise LLM deployment pipeline achieving sub-second latency for 95% of queries",
-          "Integrated knowledge graph-based RAG using Neo4j and Docling, improving context retrieval accuracy by 45%"
+        name: "Naviyo – Adaptive AI Travel Partner",
+        role: "Founder & Builder",
+        status: "Active",
+        summary: "Building an AI travel assistant that doesn't just suggest itineraries — it adapts them in real time based on who you are and what's happening around you.",
+        description: [
+          "Designed a tool-using agentic AI system that combines LLM reasoning, NLP sentiment analysis, and real-time signals (weather, crowd data, user preferences) to dynamically replan travel itineraries",
+          "Built NLP review analyzer for sentiment and safety insights, helping users make smarter destination decisions",
+          "Incorporated behavioral feedback loops to personalize recommendations over time — the more you use it, the smarter it gets",
+          "Validated product direction through A/B testing with 200+ users, achieving 82% classification accuracy",
+          "Applied product thinking from ideation to execution: user research, pain point mapping, competitive analysis, and iterative feature development"
         ],
-        technologies: ["LLM Fine-tuning", "RAG", "Multi-Agent Systems", "Vector DBs", "MLOps", "CrewAI", "Neo4j"]
+        technologies: ["LLMs", "Agentic AI", "NLP", "A/B Testing", "Real-time Systems", "Personalization", "Python"]
       },
+
       previous: [
         {
-          title: "HPC Research Assistant",
-          company: "Northeastern University",
-          period: "February 2024 - April 2025",
-          location: "Boston, Massachusetts, United States",
-          achievements: [
-            "Containerized 15+ research applications using Docker, reducing deployment time from 4 hours to 20 minutes and improving scientific workflow efficiency by 70%",
-            "Analyzed 2.5M SLURM job logs using PySpark distributed computing, identifying failure patterns that reduced HPC job failures by 20%",
-            "Automated SLURM account provisioning through shell scripting and REST APIs, decreasing administrative overhead by 70%"
-          ],
-          technologies: ["PySpark", "SLURM", "HPC", "Docker", "Data Processing", "Distributed Computing", "REST APIs"]
-        },
-        {
           title: "Software Engineer",
-          company: "Value Labs Solutions",
-          period: "February 2022 - August 2023",
-          location: "Hyderabad, Telangana, India",
+          company: "Salesforce",
+          period: "Jul 2023 – Aug 2025",
+          location: "Hyderabad, India",
+          summary: "Owned end-to-end feature delivery for internal asset management workflows serving 40K+ enterprise users — combining engineering execution with product thinking to drive measurable impact.",
           achievements: [
-            "Developed scalable ETL pipelines processing 5TB+ daily operational data on Azure Blob Storage, improving analytics query performance by 30%",
-            "Implemented microservices architecture using Docker containers and Azure Kubernetes Service, reducing deployment time by 50% and achieving 99.9% uptime",
-            "Established automated testing framework using Selenium and TestNG, increasing code coverage to 85% and reducing production bugs by 40%"
+            "Drove a 40% reduction in onboarding time by redesigning lifecycle workflows and eliminating manual handoffs across high-volume asset creation pipelines",
+            "Led post-launch experimentation using A/B testing on automation and validation logic, cutting manual verification effort by 65% while maintaining compliance standards",
+            "Defined and tracked core product metrics (adoption rate, processing latency, error rate) through custom dashboards, directly informing roadmap decisions",
+            "Mentored a junior intern on KPI design, dashboard development, and stakeholder communication",
+            "Collaborated cross-functionally with ops, infra, and business teams to ship PRDs from ideation to production"
           ],
-          technologies: ["Docker", "Azure", "Kubernetes", "Microservices", "CI/CD", "ETL", "Selenium", "TestNG"]
+          technologies: ["Salesforce", "SOQL", "Python", "REST APIs", "Workflow Automation", "A/B Testing", "Dashboards"]
         },
         {
-          title: "Co-Founder",
-          company: "4-Tech AI&ML Solutions",
-          period: "May 2018 - April 2023",
-          location: "Bengaluru, Karnataka, India",
+          title: "Product Analytics & Insights Intern",
+          company: "SRM Films",
+          period: "May 2023 – Jul 2023",
+          location: "Hyderabad, India",
+          summary: "Turned raw engagement data into strategic content insights — helping the team understand what their audience actually wanted.",
           achievements: [
-            "Led AI/ML data operations for Fortune 500 clients including Apple, Mercedes-Benz, and Google, managing 50+ annotation projects",
-            "Supervised training data preparation for Siri's regional language models, improving voice recognition accuracy by 18% for 3 Indian languages",
-            "Optimized data preprocessing pipeline for voice recognition models, reducing processing time by 25% while maintaining quality standards"
+            "Analyzed audience engagement, drop-off, and churn patterns across digital film content to surface behavioral insights and unmet user needs",
+            "Built operational dashboards translating content performance data into actionable inputs for release strategy and marketing optimization",
+            "Reduced manual reporting effort by 60% through automated analytics workflows"
           ],
-          technologies: ["AI/ML", "Enterprise Solutions", "Data Annotation", "Voice Recognition", "Client Management", "Python"]
+          technologies: ["SQL", "Python", "Tableau", "Data Analysis"]
+        },
+        {
+          title: "Summer Analyst Intern",
+          company: "Salesforce",
+          period: "May 2022 – Jul 2022",
+          location: "Hyderabad, India",
+          summary: "First exposure to enterprise-scale systems — shipped automations that made a real dent in onboarding friction.",
+          achievements: [
+            "Developed Slack–MuleSoft automations to streamline Salesforce onboarding workflows, cutting onboarding time from 3 days to under 4 hours",
+            "Strengthened security controls while improving new hire engagement by 75%",
+            "Gained hands-on experience with enterprise APIs and cross-system integrations at scale"
+          ],
+          technologies: ["Python", "REST APIs", "Salesforce", "MuleSoft", "Slack Automation"]
         }
-      ]
+      ],
+
+      research: {
+        role: "Research Assistant",
+        supervisor: "Professor Dr. Supriya Vaddi",
+        period: "2022 – 2023",
+        institution: "G. Narayanamma Institute of Technology and Science, Hyderabad, India",
+        summary: "Co-authored a published Springer paper on solar energy prediction — handling the full ML pipeline from raw data to a fine-tuned predictive model.",
+        publication: {
+          title: "Solar Energy Prediction and Demand Analysis",
+          conference: "International Conference on Machine Learning, Big Data, and Data Analytics (ICMLBDA)",
+          publisher: "Springer",
+          year: 2023,
+          doi: "978-3-031-51338-1_57",
+          link: "https://link.springer.com/chapter/10.1007/978-3-031-51338-1_57",
+          impact: {
+            citations: "15+",
+            downloads: "500+",
+            academicMentions: "10+"
+          },
+          keywords: ["Solar Energy", "Machine Learning", "Predictive Analytics", "Demand Forecasting", "Renewable Energy"]
+        },
+        contributions: [
+          "End-to-end data collection from real-world energy and meteorological sources",
+          "Data cleaning, preprocessing, and feature engineering pipelines",
+          "Built and benchmarked multiple ML models for solar energy forecasting",
+          "Fine-tuned hyperparameters and iteratively improved model accuracy"
+        ],
+        technologies: ["Python", "Machine Learning", "Feature Engineering", "Predictive Modeling"]
+      }
     };
 
-    // Return based on detail parameter
     if (detail === 'current') {
       return { experience: { current: experienceData.current } };
     } else if (detail === 'previous') {
       return { experience: { previous: experienceData.previous } };
+    } else if (detail === 'startup') {
+      return { experience: { current: experienceData.current } };
+    } else if (detail === 'research') {
+      return { experience: { research: experienceData.research } };
     } else {
       return { experience: experienceData };
     }
   },
-}); 
+});

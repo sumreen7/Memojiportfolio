@@ -24,7 +24,7 @@ const ChatLoading = () => (
           Loading Chat Interface
         </h2>
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          Preparing your conversation with Rakshith...
+          Preparing your conversation with Sumreen...
         </p>
       </div>
     </motion.div>

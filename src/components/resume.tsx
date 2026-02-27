@@ -8,13 +8,13 @@ import Image from 'next/image';
 export function Resume() {
   // Resume details
   const resumeDetails = {
-    title: "Rakshith's Resume",
-    description: 'Generative AI Engineer • Full Stack Developer',
+    title: "Sumreen's Resume",
+    description: 'Building at the intersection of AI & product • Currently @ Carnegie Mellon',
     fileType: 'PDF',
-    lastUpdated: 'March 2025',
+    lastUpdated: 'February 2026',
     fileSize: 'PDF',
     previewImageSrc: '/resume_preview.png',
-    downloadUrl: 'https://drive.google.com/file/d/1WYS5PkRXtL_tgTZK1Xfx95lBlw27aYPR/view',
+    downloadUrl: 'https://drive.google.com/file/d/1vOzcZ9741kVX5ib-htA9D1q0olLDnAA1/view?usp=sharing',
   };
 
   const handleDownload = () => {

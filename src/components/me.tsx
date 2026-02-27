@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+//import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -40,14 +40,12 @@ export default function Me({ data }: MeProps) {
               className="flex-shrink-0"
             >
               <div className="relative w-48 h-48 lg:w-64 lg:h-64 mx-auto lg:mx-0">
-                <Image
-                  src={data.photo}
-                  alt={data.name}
-                  fill
-                  className="rounded-2xl object-cover shadow-lg"
-                  priority
-                />
-              </div>
+  <img
+    src={data.photo}
+    alt={data.name}
+    className="w-full h-full rounded-2xl object-cover shadow-lg"
+  />
+</div>
             </motion.div>
 
             {/* Content Section */}

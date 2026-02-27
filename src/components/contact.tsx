@@ -7,20 +7,20 @@ import { ChevronRight, Mail, Phone, MapPin, Github, Linkedin } from 'lucide-reac
 export function Contact() {
   // Contact information
   const contactInfo = {
-    name: 'Rakshith Dharmappa',
-    email: 'dharmappa.r@northeastern.edu',
-    phone: '+1-857-398-3843',
-    location: 'Frisco, Dallas',
-    hometown: 'Bengaluru',
+    name: 'Fathima Sumreen',
+    email: 'sumreenf@andrew.cmu.edu',
+    phone: '+1-412-708-4876',
+    location: 'Pittsburgh, Pennsylvania, USA · Open to relocation & remote',
+    hometown: 'Hyderabad, India',
     socials: [
       {
         name: 'LinkedIn',
-        url: 'https://www.linkedin.com/in/rakshithd26',
+        url: 'https://www.linkedin.com/in/sumreen7',
         icon: <Linkedin className="inline h-5 w-5 mr-1 text-blue-700" />,
       },
       {
         name: 'GitHub',
-        url: 'https://github.com/rakshith2605',
+        url: 'https://github.com/sumreen7',
         icon: <Github className="inline h-5 w-5 mr-1 text-foreground" />,
       },
     ],

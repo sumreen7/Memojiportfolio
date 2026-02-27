@@ -3,89 +3,108 @@
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { Briefcase, Calendar, MapPin, Star, TrendingUp, Users } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, FlaskConical, Rocket, Cloud, BookOpen, BarChart } from 'lucide-react';
 import Image from 'next/image';
 
 const Experience = () => {
   const experienceData = [
     {
-      title: 'Generative AI Engineer',
-      company: 'Reliance Jio Infocom',
-      period: 'May 2025 - Present',
-      location: 'Dallas, Texas, United States',
-      description: 'Building O-TAP CoPilot and low-latency LLM RAG stacks for telecom operations.',
+      title: 'Founder & Builder',
+      company: 'Naviyo – Adaptive AI Travel Partner',
+      period: 'Present',
+      location: 'Pittsburgh, PA',
+      description: 'Building an AI travel assistant that dynamically adapts itineraries in real time based on who you are and what\'s happening around you.',
       achievements: [
-        'Architected O-TAP Co-Pilot using multi-agent RAG system with CrewAI and LangGraph, reducing NOC engineer workload by 40%',
-        'Designed patent-pending LLM architecture for telecom diagram generation using sub-10B parameter models, outperforming GPT-4 and Claude while reducing inference costs by 60%',
-        'Implemented on-premise LLM deployment pipeline achieving sub-second latency for 95% of queries',
-        'Integrated knowledge graph-based RAG using Neo4j and Docling, improving context retrieval accuracy by 45%'
+        'Designed a tool-using agentic AI system combining LLM reasoning, NLP sentiment analysis, and real-time signals (weather, crowd data, preferences)',
+        'Built NLP review analyzer for sentiment and safety insights, helping users make smarter destination decisions',
+        'Incorporated behavioral feedback loops to personalize recommendations over time',
+        'Validated product direction through A/B testing with 200+ users, achieving 82% classification accuracy',
+        'Applied product thinking end-to-end: user research, pain point mapping, competitive analysis, and iterative feature development'
       ],
-      technologies: ['LLM Fine-tuning', 'RAG', 'Multi-Agent Systems', 'Vector DBs', 'MLOps', 'CrewAI', 'Neo4j'],
-      type: 'Full-time',
-      logo: '/Reliance_Jio_Logo.svg.png',
-      color: 'bg-blue-50 text-blue-600 border border-blue-200',
-    },
-    {
-      title: 'HPC Research Assistant',
-      company: 'Northeastern University',
-      period: 'February 2024 - April 2025',
-      location: 'Boston, Massachusetts, United States',
-      description: 'Optimized high-performance computing workflows and data processing pipelines.',
-      achievements: [
-        'Containerized 15+ research applications using Docker, reducing deployment time from 4 hours to 20 minutes and improving scientific workflow efficiency by 70%',
-        'Analyzed 2.5M SLURM job logs using PySpark distributed computing, identifying failure patterns that reduced HPC job failures by 20%',
-        'Automated SLURM account provisioning through shell scripting and REST APIs, decreasing administrative overhead by 70%',
-        'Improved system performance and workflow efficiency through containerization and automation'
-      ],
-      technologies: ['PySpark', 'SLURM', 'HPC', 'Docker', 'Data Processing', 'Distributed Computing', 'REST APIs'],
-      type: 'Research',
-      logo: '/NU.png',
-      color: 'bg-purple-50 text-purple-600 border border-purple-200',
+      technologies: ['LLMs', 'Agentic AI', 'NLP', 'A/B Testing', 'Real-time Systems', 'Python', 'Personalization'],
+      type: 'Startup',
+      logo: '/naviyo.png',
+      color: 'bg-violet-50 text-violet-600 border border-violet-200',
     },
     {
       title: 'Software Engineer',
-      company: 'Value Labs Solutions',
-      period: 'February 2022 - August 2023',
-      location: 'Hyderabad, Telangana, India',
-      description: 'Developed scalable web applications and cloud infrastructure solutions.',
+      company: 'Salesforce',
+      period: 'Jul 2023 – Aug 2025',
+      location: 'Hyderabad, India',
+      description: 'Owned end-to-end feature delivery for internal asset management workflows serving 40K+ enterprise users.',
       achievements: [
-        'Developed scalable ETL pipelines processing 5TB+ daily operational data on Azure Blob Storage, improving analytics query performance by 30%',
-        'Implemented microservices architecture using Docker containers and Azure Kubernetes Service, reducing deployment time by 50% and achieving 99.9% uptime',
-        'Established automated testing framework using Selenium and TestNG, increasing code coverage to 85% and reducing production bugs by 40%',
-        'Built cloud-native applications with automated CI/CD pipelines'
+        'Drove a 40% reduction in onboarding time by redesigning lifecycle workflows and eliminating manual handoffs',
+        'Led A/B testing on automation and validation logic, cutting manual verification effort by 65% while maintaining compliance',
+        'Defined and tracked core product metrics (adoption rate, processing latency, error rate) through custom dashboards',
+        'Mentored a junior intern on KPI design, dashboard development, and stakeholder communication',
+        'Collaborated cross-functionally with ops, infra, and business teams to ship PRDs from ideation to production'
       ],
-      technologies: ['Docker', 'Azure', 'Kubernetes', 'Microservices', 'CI/CD', 'ETL', 'Selenium', 'TestNG'],
+      technologies: ['Salesforce', 'SOQL', 'Python', 'REST APIs', 'Workflow Automation', 'A/B Testing', 'Dashboards'],
       type: 'Full-time',
-      logo: '/valuelabs_logo-removebg-preview.png',
-      color: 'bg-green-50 text-green-600 border border-green-200',
+      logo: '/salesforce.png',
+      color: 'bg-blue-50 text-blue-600 border border-blue-200',
     },
     {
-      title: 'Co-Founder',
-      company: '4-Tech AI&ML Solutions',
-      period: 'May 2018 - April 2023',
-      location: 'Bengaluru, Karnataka, India',
-      description: 'Co-founded AI/ML company working with major clients including Apple, Mercedes-Benz, and Google.',
+      title: 'Research Assistant',
+      company: 'G. Narayanamma Institute of Technology and Science',
+      period: '2022 – 2023',
+      location: 'Hyderabad, India',
+      description: 'Co-authored a published Springer paper on solar energy prediction under Professor Dr. Supriya Vaddi.',
       achievements: [
-        'Led AI/ML data operations for Fortune 500 clients including Apple, Mercedes-Benz, and Google, managing 50+ annotation projects',
-        'Supervised training data preparation for Siri\'s regional language models, improving voice recognition accuracy by 18% for 3 Indian languages',
-        'Optimized data preprocessing pipeline for voice recognition models, reducing processing time by 25% while maintaining quality standards',
-        'Built and deployed production AI systems for enterprise clients'
+        'End-to-end data collection from real-world energy and meteorological sources',
+        'Built data cleaning, preprocessing, and feature engineering pipelines',
+        'Benchmarked multiple ML models for solar energy forecasting and fine-tuned for accuracy',
+        'Published at ICMLBDA 2023 — 15+ citations, 500+ downloads, 10+ academic mentions',
       ],
-      technologies: ['AI/ML', 'Enterprise Solutions', 'Data Annotation', 'Voice Recognition', 'Client Management', 'Python'],
-      type: 'Startup',
-      icon: <Users className="h-5 w-5" />,
-      color: 'bg-orange-50 text-orange-600 border border-orange-200',
+      technologies: ['Python', 'Machine Learning', 'Feature Engineering', 'Predictive Modeling', 'Data Preprocessing'],
+      type: 'Research',
+      logo: '/gnits.jpg',
+      color: 'bg-green-50 text-green-600 border border-green-200',
+      publication: {
+        title: 'Solar Energy Prediction and Demand Analysis',
+        link: 'https://link.springer.com/chapter/10.1007/978-3-031-51338-1_57',
+        doi: '978-3-031-51338-1_57',
+      }
+    },
+    {
+      title: 'Product Analytics & Insights Intern',
+      company: 'SRM Films',
+      period: 'May 2023 – Jul 2023',
+      location: 'Hyderabad, India',
+      description: 'Turned raw engagement data into strategic content insights — helping the team understand what their audience actually wanted.',
+      achievements: [
+        'Analyzed audience engagement, drop-off, and churn patterns across digital film content',
+        'Built operational dashboards translating content performance into actionable release strategy inputs',
+        'Reduced manual reporting effort by 60% through automated analytics workflows'
+      ],
+      technologies: ['SQL', 'Python', 'Tableau', 'Data Analysis'],
+      type: 'Internship',
+      logo: '/srm.jpeg',
+      color: 'bg-pink-50 text-pink-600 border border-pink-200',
+    },
+    {
+      title: 'Summer Analyst Intern',
+      company: 'Salesforce',
+      period: 'May 2022 – Jul 2022',
+      location: 'Hyderabad, India',
+      description: 'First exposure to enterprise-scale systems — shipped automations that made a real dent in onboarding friction.',
+      achievements: [
+        'Developed Slack–MuleSoft automations cutting onboarding time from 3 days to under 4 hours',
+        'Strengthened security controls while improving new hire engagement by 75%',
+        'Gained hands-on experience with enterprise APIs and cross-system integrations at scale'
+      ],
+      technologies: ['Python', 'REST APIs', 'Salesforce', 'MuleSoft', 'Slack Automation'],
+      type: 'Internship',
+      logo: '/salesforce.png',
+      color: 'bg-blue-50 text-blue-600 border border-blue-200',
     },
   ];
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -94,7 +113,7 @@ const Experience = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.19, 1, 0.22, 1] },
+      transition: { duration: 0.6, ease: 'easeInOut' },
     },
   };
 
@@ -103,7 +122,7 @@ const Experience = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.3, ease: 'easeOut' },
+      transition: { duration: 0.3, ease: 'easeInOut' },
     },
   };
 
@@ -136,14 +155,15 @@ const Experience = () => {
               >
                 {/* Experience Header */}
                 <div className="flex items-start gap-4">
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-lg ${experience.color} overflow-hidden`}>
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-lg text-2xl ${experience.color} overflow-hidden`}>
                     {experience.logo ? (
                       <Image
                         src={experience.logo}
                         alt={`${experience.company} logo`}
                         width={40}
                         height={40}
-                        className="object-contain"
+                        className="object-contain w-full h-full"
+                        objectFit="contain"
                       />
                     ) : (
                       experience.icon
@@ -158,7 +178,7 @@ const Experience = () => {
                         {experience.type}
                       </Badge>
                     </div>
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Briefcase className="h-4 w-4" />
                         <span>{experience.company}</span>
@@ -179,6 +199,19 @@ const Experience = () => {
                 <p className="text-muted-foreground text-base leading-relaxed">
                   {experience.description}
                 </p>
+
+                {/* Publication link for research */}
+                {'publication' in experience && experience.publication && (
+                  <a
+                    href={experience.publication.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-blue-500 hover:underline"
+                  >
+                    <FlaskConical className="h-4 w-4" />
+                    {experience.publication.title} — DOI: {experience.publication.doi}
+                  </a>
+                )}
 
                 {/* Achievements */}
                 <div className="space-y-2">
@@ -207,14 +240,7 @@ const Experience = () => {
                     animate="visible"
                   >
                     {experience.technologies.map((tech, idx) => (
-                      <motion.div
-                        key={idx}
-                        variants={badgeVariants}
-                        whileHover={{
-                          scale: 1.04,
-                          transition: { duration: 0.2 },
-                        }}
-                      >
+                      <motion.div key={idx} variants={badgeVariants} whileHover={{ scale: 1.04, transition: { duration: 0.2 } }}>
                         <Badge className="border px-3 py-1.5 font-normal">
                           {tech}
                         </Badge>
@@ -223,7 +249,6 @@ const Experience = () => {
                   </motion.div>
                 </div>
 
-                {/* Separator */}
                 {index < experienceData.length - 1 && (
                   <div className="border-t border-border pt-6" />
                 )}
@@ -236,4 +261,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;

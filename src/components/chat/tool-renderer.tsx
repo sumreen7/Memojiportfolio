@@ -73,6 +73,22 @@ export default function ToolRenderer({
       {toolInvocations.map((tool) => {
         const { toolCallId, toolName } = tool;
 
+        console.log(`Tool Name: ${toolName}`, tool);
+        let parsedResult = null;
+        try {
+          if (tool.result && typeof tool.result === 'string') {
+            parsedResult = JSON.parse(tool.result);
+          } else {
+            console.warn(`Tool result is not a valid JSON string:`, tool.result);
+          }
+        } catch (error) {
+          console.error(`Error parsing tool result for ${toolName}:`, error);
+        }
+
+        if (!parsedResult) {
+          console.error(`Invalid or empty tool result for ${toolName}:`, tool.result);
+        }
+
         // Return specialized components based on tool name
         switch (toolName) {
           case 'getProjects':
@@ -157,19 +173,21 @@ export default function ToolRenderer({
           case 'getMe':
             return (
               <div key={toolCallId} className="w-full rounded-lg p-2">
-                <Me data={JSON.parse(tool.result).data} />
+                {parsedResult ? <Me data={parsedResult.data} /> : <p>Error loading data.</p>}
               </div>
             );
 
           case 'getRCB':
             return (
               <div key={toolCallId} className="w-full rounded-lg p-2">
-                <RCB data={JSON.parse(tool.result).data} />
+                {parsedResult ? <RCB data={parsedResult.data} /> : <p>Error loading data.</p>}
               </div>
             );
 
           case 'getWebSearch':
-            return <WebSearchResult key={toolCallId} result={tool.result} />;
+            return (
+              <WebSearchResult key={toolCallId} result={tool.result || 'No results found.'} />
+            );
 
           // Default renderer for other tools
           default:
@@ -185,12 +203,12 @@ export default function ToolRenderer({
                   </span>
                 </div>
                 <div className="mt-2">
-                  {typeof tool.result === 'object' ? (
+                  {parsedResult ? (
                     <pre className="bg-secondary/20 overflow-x-auto rounded p-3 text-sm">
-                      {JSON.stringify(tool.result, null, 2)}
+                      {JSON.stringify(parsedResult, null, 2)}
                     </pre>
                   ) : (
-                    <p>{String(tool.result)}</p>
+                    <p>Error loading tool result.</p>
                   )}
                 </div>
               </div>

@@ -14,9 +14,7 @@ import { getExperience } from './tools/getExperience';
 import { getInternship } from './tools/getIntership';
 import { getMe } from './tools/getMe';
 import { getPresentation } from './tools/getPresentation';
-import { getProducts } from './tools/getProducts';
 import { getProjects } from './tools/getProjects';
-import { getRCB } from './tools/getRCB';
 import { getResume } from './tools/getResume';
 import { getSkills } from './tools/getSkills';
 import { getSports } from './tools/getSport';
@@ -141,9 +139,12 @@ export async function POST(req: Request) {
     }
 
     const { messages } = await req.json();
-    
+
+    console.log('Incoming messages:', messages);
+
     // Validate messages
     if (!messages || !Array.isArray(messages)) {
+      console.error('Invalid messages format:', messages);
       return new Response(
         JSON.stringify({ error: 'Invalid request format. Messages array is required.' }),
         { 
@@ -152,7 +153,7 @@ export async function POST(req: Request) {
         }
       );
     }
-
+    
     // Validate message content and length
     const maxMessageLength = 10000; // 10KB per message
     const maxMessages = 50; // Maximum number of messages in conversation
@@ -213,7 +214,6 @@ export async function POST(req: Request) {
     });
 
     const tools = {
-      getProducts: createCachedTool(getProducts, 'getProducts'),
       getProjects: createCachedTool(getProjects, 'getProjects'),
       getPresentation: createCachedTool(getPresentation, 'getPresentation'),
       getResume: createCachedTool(getResume, 'getResume'),
@@ -224,27 +224,26 @@ export async function POST(req: Request) {
       getCrazy: createCachedTool(getCrazy, 'getCrazy'),
       getInternship: createCachedTool(getInternship, 'getInternship'),
       getMe: createCachedTool(getMe, 'getMe'),
-      getRCB: createCachedTool(getRCB, 'getRCB'),
       getWebSearch: createCachedTool(getWebSearch, 'getWebSearch'),
     };
 
+    console.log('Tool invocations:', tools);
+
     // Optimized model configuration
     const modelConfig = {
-      name: 'meta-llama/llama-4-maverick-17b-128e-instruct',
+      name: 'llama-3.1-8b-instant',
       maxSteps: 2, // Reduced for faster tool calls
-      maxTokens: 1500, // Reduced for faster responses
+      maxTokens: 500, // Reduced token usage to avoid rate limits
       temperature: 0.5, // Lower temperature for more focused responses
     };
 
-    
-
-    // Optimized retry mechanism
+    // Optimized retry mechanism with backoff
     let lastError: Error | null = null;
-    
+
     for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
       try {
         console.log(`[CHAT-API] Attempt ${attempt} with model: ${modelConfig.name}`);
-        
+
         const result = streamText({
           model: groq(modelConfig.name),
           messages: messagesWithSystem,
@@ -258,19 +257,19 @@ export async function POST(req: Request) {
         const response = result.toDataStreamResponse({
           getErrorMessage: errorHandler,
         });
-        
+
         // Add security and rate limit headers
         response.headers.set('X-Content-Type-Options', 'nosniff');
         response.headers.set('X-Frame-Options', 'DENY');
         response.headers.set('X-RateLimit-Limit', MAX_REQUESTS_PER_WINDOW.toString());
         response.headers.set('X-RateLimit-Remaining', (MAX_REQUESTS_PER_WINDOW - (rateLimitMap.get(clientIP)?.count || 0)).toString());
         response.headers.set('X-Model-Used', modelConfig.name);
-        
+
         return response;
       } catch (error) {
         lastError = error as Error;
         console.error(`Attempt ${attempt} failed:`, error);
-        
+
         // Don't retry on certain error types
         if (error instanceof Error) {
           if (error.message.includes('validation') || 
@@ -279,10 +278,12 @@ export async function POST(req: Request) {
             break;
           }
         }
-        
+
         // Wait before retrying (except on last attempt)
         if (attempt < MAX_RETRIES) {
-          await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * attempt));
+          const backoffTime = RETRY_DELAY * attempt;
+          console.log(`Waiting ${backoffTime}ms before retrying...`);
+          await new Promise(resolve => setTimeout(resolve, backoffTime));
         }
       }
     }

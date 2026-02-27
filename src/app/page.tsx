@@ -35,27 +35,43 @@ const ChatComponent = dynamic(() => import('@/components/chat/chat'), {
 
 /* ---------- quick-question data ---------- */
 const questions = {
-  Me: 'Who are you? I want to know more about you.',
-  Products: 'What are your products? Show me your commercial products and platforms.',
-  Projects: 'What are your projects? What are you working on right now?',
-  Skills: 'What are your skills? Give me a list of your soft and hard skills.',
+  'About Me': 'Who are you? I want to know more about you.',
   Experience: 'What is your work experience? Tell me about your professional background.',
+  Projects: 'What are your projects? What are you working on right now?',
+  Achievements: 'What are your achievements and accomplishments?',
+  Skills: 'What are your skills? Give me a list of your soft and hard skills.',
   Contact: 'How can I contact you?',
 } as const;
 
 const questionConfig = [
-  { key: 'Me', color: '#329696', icon: Laugh },
-  { key: 'Products', color: '#FF6B35', icon: Package },
-  { key: 'Projects', color: '#3E9858', icon: Code },
-  { key: 'Skills', color: '#856ED9', icon: Layers },
+  { key: 'About Me', color: '#329696', icon: Laugh },
   { key: 'Experience', color: '#B95F9D', icon: GraduationCap },
+  { key: 'Projects', color: '#3E9858', icon: Code },
+  { key: 'Achievements', color: '#FF6B35', icon: PartyPopper },
+  { key: 'Skills', color: '#856ED9', icon: Layers },
   { key: 'Contact', color: '#C19433', icon: Mail },
 ] as const;
 
 const TITLES = [
   'GenAI Developer',
   'Data Scientist',
-  'Machine Learning Engineer',
+  'Product Thinker',
+  'ML Engineer'
+  
+];
+
+const memojiImages = [
+  '/landingpage2.png',
+  '/landingpage4.png',
+  '/landingpage1.png',
+  '/landingpage3.png'
+];
+
+const memojiSizes = [
+  { width: 325, height: 325 }, // landingpage1
+  { width: 500, height: 500 }, // landingpage2
+  { width: 350, height: 350 }, // landingpage3
+  { width: 400, height: 400 }, // landingpage4
 ];
 
 /* ---------- component ---------- */
@@ -66,7 +82,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [currentTitle, setCurrentTitle] = useState(0);
-  const titleTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const openChat = async (query: string) => {
     setInitialQuery(query);
@@ -100,23 +115,28 @@ export default function Home() {
   };
 
   useEffect(() => {
-    titleTimeout.current = setTimeout(() => {
-      setCurrentTitle((prev) => (prev + 1) % TITLES.length);
-    }, 2000);
-    return () => {
-      if (titleTimeout.current) clearTimeout(titleTimeout.current);
-    };
-  }, [currentTitle]);
+    const titleInterval = setInterval(() => {
+      setCurrentTitle((prev) => {
+        const nextTitle = (prev + 1) % TITLES.length;
+        return nextTitle;
+      });
+    }, 3000); // Adjusted interval to 3000ms to slow down the changes
+
+    return () => clearInterval(titleInterval);
+  }, []);
 
   useEffect(() => {
     // Preload chat assets in background
     const img = new window.Image();
-    img.src = '/landing-memojis.png';
+    img.src = '/landing_memojis.png';
 
     // Preload new emoji GIF
     const gifImg = new window.Image();
     gifImg.src = '/EmojiMovie774657265.gif';
   }, []);
+
+  const currentMemoji = memojiImages[currentTitle];
+  const currentMemojiSize = memojiSizes[currentTitle];
 
   return (
     <motion.div
@@ -134,7 +154,7 @@ export default function Home() {
           className="hidden bg-gradient-to-b from-muted-foreground/10 to-muted-foreground/0 bg-clip-text text-[10rem] leading-none font-black text-transparent select-none sm:block lg:text-[16rem]"
           style={{ marginBottom: '-2.5rem' }}
         >
-          Rakshith
+          Sumreen
         </div>
       </div>
 
@@ -143,9 +163,9 @@ export default function Home() {
       <div className="absolute top-6 left-6 z-20">
         <button
           onClick={() => {
-            const subject = encodeURIComponent('I wanna discuss with you for an offer');
-            const body = encodeURIComponent('Hi Rakshith,\n\nI would like to discuss a potential opportunity with you.\n\nBest regards,');
-            window.location.href = `mailto:dharmappa.r@northeastern.edu?subject=${subject}&body=${body}`;
+            const subject = encodeURIComponent('Let\'s connect!');
+            const body = encodeURIComponent("Hi Sumreen,\n\nI came across your portfolio and would love to connect.\n\nBest,");
+            window.location.href = `mailto:sumreenf@andrew.cmu.edu?subject=${subject}&body=${body}`;
           }}
                       className="relative flex cursor-pointer items-center gap-2 rounded-full border bg-background/30 px-4 py-1.5 text-sm font-medium text-foreground shadow-md backdrop-blur-lg transition hover:bg-background/60"
         >
@@ -154,13 +174,13 @@ export default function Home() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
           </span>
-          wanna hire me?
+          Interested to talk more?
         </button>
       </div>
 
       {/* header */}
       <motion.div
-        className="z-1 mt-24 mb-4 flex flex-col items-center text-center md:mt-4 md:mb-8"
+        className="z-1 mt-24 mb-0 flex flex-col items-center text-center md:mt-4 md:mb-0"
         variants={topElementVariants}
         initial="hidden"
         animate="visible"
@@ -170,7 +190,7 @@ export default function Home() {
         </div>
 
         <h2 className="text-secondary-foreground mt-1 text-xl font-semibold md:text-2xl">
-          Hey, I'm Rakshith 👋
+          Hey, I'm Sumreen 👋
         </h2>
         <div style={{ minHeight: 60 }}>
           <AnimatePresence mode="wait">
@@ -189,20 +209,63 @@ export default function Home() {
       </motion.div>
 
               {/* centre memoji */}
-        <motion.div 
-          className="relative z-10 mb-8 flex justify-center"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.2 }}
-        >
-          <Image
-            src="/landing-memojis.png"
-            alt="Hero memoji"
-            width={300}
-            height={300}
-            priority
-            className="h-48 w-48 object-contain sm:h-64 sm:w-64"
-          />
-        </motion.div>
+        {/* centre memoji */}
+<motion.div 
+  className="relative z-10 mt-0 mb-0 flex justify-center"
+  whileHover={{ scale: 1.05 }}
+  transition={{ duration: 0.2 }}
+>
+  <AnimatePresence mode="wait">
+    {currentTitle === 0 && (
+      <motion.div
+        key="memoji-0"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="relative -top-20 -mb-29.5"
+      >
+        <Image src="/landingpage2.png" alt="GenAI Developer" width={449} height={449} priority className="h-[449px] w-[449px] object-contain" />
+      </motion.div>
+    )}
+    {currentTitle === 1 && (
+      <motion.div
+        key="memoji-1"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="relative -top-20 -mb-29.5"
+      >
+        <Image src="/landingpage4.png" alt="Data Scientist" width={449} height={449} priority className="h-[449px] w-[449px] object-contain" />
+      </motion.div>
+    )}
+    {currentTitle === 2 && (
+      <motion.div
+        key="memoji-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="relative top-0 mb-4"
+      >
+        <Image src="/landingpage1.png" alt="Product Thinker" width={315} height={315} priority className="h-[315px] w-[315px] object-contain" />
+      </motion.div>
+    )}
+    {currentTitle === 3 && (
+      <motion.div
+        key="memoji-3"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.5 }}
+        className="relative -top-20 -mb-36"
+      >
+        <Image src="/landingpage3.png" alt="ML Engineer" width={475} height={475} priority className="h-[475px] w-[475px] object-contain" />
+      </motion.div>
+    )}
+  </AnimatePresence>
+</motion.div>
 
         {/* input + quick buttons */}
         <motion.div
@@ -219,7 +282,7 @@ export default function Home() {
                 await openChat(input.trim());
               }
             }}
-            className="relative w-full max-w-lg"
+            className="relative w-full max-w-2xl"
           >
             <div className="mx-auto flex items-center rounded-full border border-border bg-background/30 py-2.5 pr-2 pl-6 backdrop-blur-lg transition-all hover:border-border/60">
               <input
@@ -242,7 +305,7 @@ export default function Home() {
           </form>
 
           {/* quick-question grid */}
-          <div className="mt-6 grid w-full max-w-3xl grid-cols-2 gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid w-full max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3">
             {questionConfig.map(({ key, color, icon: Icon }) => (
               <motion.div
                 key={key}

@@ -14,10 +14,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Rakshith Dharmappa Portfolio",
-  description: "Portfolio of Rakshith Dharmappa - Generative AI Engineer, Cloud & AI Enthusiast. Explore my projects, skills, and experience.",
+  title: "Sumreen's Portfolio",
+  description: "Portfolio of Sumreen - Generative AI Engineer, Cloud & AI Enthusiast. Explore my projects, skills, and experience.",
   keywords: [
-    "Rakshith Dharmappa",
+    "Sumreen",
     "Portfolio",
     "Generative AI Engineer",
     "Cloud",
@@ -29,34 +29,34 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "Rakshith Dharmappa",
-      url: "https://www.linkedin.com/in/rakshithd26/",
+      name: "Fathima Sumreen",
+      url: "https://www.linkedin.com/in/sumreen7/",
     },
   ],
-  creator: "Rakshith Dharmappa",
+  creator: "Fathima Sumreen",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://rakshithdharmappa.com",
-    title: "Rakshith Dharmappa Portfolio",
-    description: "Portfolio of Rakshith Dharmappa - Generative AI Engineer, Cloud & AI Enthusiast.",
-    siteName: "Rakshith Dharmappa Portfolio",
+    url: "https://sumreen7.com",
+    title: "Fathima Sumreen Portfolio",
+    description: "Portfolio of Fathima Sumreen - Generative AI Engineer, Cloud & AI Enthusiast.",
+    siteName: "Fathima Sumreen Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rakshith Dharmappa Portfolio",
-    description: "Portfolio of Rakshith Dharmappa - Generative AI Engineer, Cloud & AI Enthusiast.",
-    creator: "@rakshith2605",
+    title: "Fathima Sumreen Portfolio",
+    description: "Portfolio of Fathima Sumreen - Generative AI Engineer, Cloud & AI Enthusiast.",
+    creator: "@sumreen7",
   },
   icons: {
     icon: [
       {
-        url: "/fevicon2.svg",
+        url: "/fevicon2.png",
         sizes: "any",
       }
     ],
-    shortcut: "/fevicon2.svg?v=2",
-    apple: "/fevicon2.svg?v=2",
+    shortcut: "/fevicon2.png",
+    apple: "/fevicon2.png",
   },
 };
 
@@ -69,7 +69,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" href="/fevicon2.svg" sizes="any" />
+        <link rel="icon" href="/fevicon2.png" sizes="any" />
       </head>
       <body
         className={cn(

@@ -37,7 +37,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
         alt="Rakshith Dharmappa Logo"
         className="w-6 md:w-8"
       />
-      <span className="sr-only">About Rakshith Dharmappa</span>
+      <span className="sr-only">About Fathima Sumreen</span>
     </Button>
   );
 
@@ -69,7 +69,7 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
             <DialogHeader className="relative flex flex-row items-start justify-between px-8 pt-8 pb-6">
               <div>
                 <DialogTitle className="flex items-center gap-2 text-4xl font-bold tracking-tight">
-                  Welcome to Rakshith Dharmappa Portfolio
+                  Welcome to Fathima Sumreen's Portfolio
                 </DialogTitle>
                 <DialogDescription className="mt-2 text-base">
                   {/*My interactive AI portfolio experience*/}
@@ -88,14 +88,14 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
 
             {/* Content area */}
             <div className="space-y-6 overflow-y-auto px-2 py-4 md:px-8">
-              <section className="bg-accent w-full space-y-8 rounded-2xl p-8">
+              <section className="bg-pink-50 w-full space-y-8 rounded-2xl p-8">
                 {/* What section */}
                 <div className="space-y-3">
                   <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    What's ????
+                    What's new here?
                   </h3>
                   <p className="text-accent-foreground text-base leading-relaxed">
-                    I'm so excited to present my <strong>brand new developer portfolio.</strong>
+                    I'm so excited to share my <strong>interactive AI portfolio.</strong>
                     <br /> Whether you're a recruiter, a friend, family member, or just curious, feel free to ask anything you want!
                   </p>
                 </div>
@@ -103,10 +103,10 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
                 {/* Why section */}
                 <div className="space-y-3">
                   <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    Why ???
+                  Why is this different?
                   </h3>
                   <p className="text-accent-foreground text-base leading-relaxed">
-                    Traditional portfolios can be limiting. <br /> They can't adapt to every visitor's specific needs. <br /> My portfolio becomes <strong>exactly what you're interested in knowing about me and my work.</strong>
+                  Most portfolios are static. <br /> This one talks back. <br /> My portfolio becomes <strong>exactly what you're interested in knowing about me and my work.</strong>
                   </p>
                 </div>
               </section>

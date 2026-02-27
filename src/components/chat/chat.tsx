@@ -87,14 +87,14 @@ const Avatar = dynamic<AvatarProps>(
           >
             {isIOSDevice ? (
               <img
-                src="/landing-memojis.png"
+                src="/Untitled.png"
                 alt="Avatar"
                 className="h-full w-full scale-[1.8] object-contain"
                 loading="eager"
               />
             ) : (
               <img
-                src="/EmojiMovie774657265.gif"
+                src="/memoji.gif"
                 alt="Avatar"
                 className="h-full w-full scale-[1.8] object-contain"
                 loading="eager"
@@ -251,13 +251,13 @@ const Chat = ({ initialQuery, onClose }: ChatProps) => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
       >
-        <button
-          onClick={() => window.history.back()}
-                      className="flex items-center gap-2 rounded-full border bg-background/30 px-4 py-2 text-sm font-medium text-foreground shadow-md backdrop-blur-lg transition hover:bg-background/60"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back
-        </button>
+      <button
+        onClick={() => window.history.length > 1 ? window.history.back() : window.location.href = '/'}
+        className="flex items-center gap-2 rounded-full border bg-background/30 px-4 py-2 text-sm font-medium text-foreground shadow-md backdrop-blur-lg transition hover:bg-background/60"
+>
+        <ArrowLeft className="h-4 w-4" />
+        Back
+      </button>
       </motion.div>
 
       {/* Close button */}

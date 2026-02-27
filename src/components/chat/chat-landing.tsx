@@ -27,6 +27,10 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery }) => {
       icon: <Mail className="h-4 w-4" />,
       text: 'How can I contact you?',
     },
+    {
+      icon: <GraduationCap className="h-4 w-4" />,
+      text: 'What do you do for fun?',
+    },
   ];
 
   // Animation variants for staggered animation
@@ -47,9 +51,17 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery }) => {
       y: 0,
       transition: {
         duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: 'easeInOut', // Updated to use a valid easing function
       },
     },
+  };
+
+  const handleSuggestedQuestionClick = (question: { text: string }) => {
+    if (!question.text) {
+      console.error('Invalid question text:', question);
+      return; // Prevent further execution if the question text is invalid
+    }
+    submitQuery(question.text);
   };
 
   return (
@@ -62,10 +74,10 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery }) => {
       {/* Welcome message */}
       <motion.div className="mb-8 text-center" variants={itemVariants}>
         <h2 className="mb-3 text-2xl font-semibold">
-            I'm Rakshith's digital twin
+            I'm Sumreen's digital twin
         </h2>
         <p className="text-muted-foreground mx-auto max-w-md">
-          The first portfolio that fit YOU needs.
+          The Ai portfolio that fits YOUR needs.
         </p>
       </motion.div>
 
@@ -78,7 +90,7 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery }) => {
           <motion.button
             key={index}
             className="bg-accent hover:bg-accent/80 flex w-full items-center rounded-lg px-4 py-3 transition-colors"
-            onClick={() => submitQuery(question.text)}
+            onClick={() => handleSuggestedQuestionClick(question)}
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

@@ -2,38 +2,50 @@ import { tool } from 'ai';
 import { z } from 'zod';
 
 export const getMe = tool({
-  description: 'This tool provides personal information about Rakshith Dharmappa including his background, interests, expertise, and experience.',
+  description: 'This tool provides personal information about Fathima Sumreen including her background, interests, expertise, and experience.',
   parameters: z.object({
-    query: z.string().describe("The user's query about Rakshith"),
+    query: z.string().describe("The user's query about Sumreen"),
   }),
   execute: async ({ query }) => {
     const meInfo = {
-      name: "Rakshith Dharmappa",
-      location: "Frisco, Dallas, USA",
-      hometown: "Bengaluru, India",
-      currentRole: "AI Developer at Reliance Jio",
-      background: "Hey! I'm Rakshith Dharmappa, originally from Bengaluru and currently diving deep into the world of AI and tech. I've been working on cool stuff with Generative AI, building smart tools that make life easier—especially in the telecom space. Right now, I'm with Reliance Jio, and before that, I've had some great learning experiences across startups, research labs, and cloud platforms.",
-      interests: "When I'm not geeking out over AI, you'll probably find me playing cricket, locked into a chess match, or dropping into Call of Duty. I'm a die-hard RCB fan boy for the past 18 years - AB de Villiers and Virat Kohli are my absolute favorites! I also have a soft spot for history and geo-politics—nothing like a deep dive into world affairs to keep the brain ticking.",
-      photo: "/me.png",
+      name: "Fathima Sumreen",
+      location: "Pittsburgh, PA, USA",
+      hometown: "Hyderabad, India",
+      currentRole: "Master's Student at Carnegie Mellon University (MISM - Business Intelligence & Data Analytics)",
+      background: "Hey! I'm Sumreen, originally from Hyderabad and currently at Carnegie Mellon pursuing my Master's in Information Systems. I spent two years at Salesforce as a Software Engineer building AI-powered automation workflows — think Agentforce agents, Slack bots, and onboarding systems used by 40K+ enterprise users. Now I'm channeling that technical depth into product management, combining my engineering roots with a passion for data-driven decision making and user-centered design.",
+      interests: "Outside of work and school, I'm someone who loves exploring new places and cultures — travel is genuinely my reset button. I'm also into keeping up with the latest in AI and tech, and I enjoy diving into competitive strategy whether that's in product thinking or just life in general. Ask me about my YOMIGO travel project and you'll see how those two worlds collide!",
+      photo: "/new-image.png",
       expertise: [
-        "Generative AI",
-        "Machine Learning",
-        "Telecom Solutions",
-        "Full-Stack Development",
-        "Cloud Platforms"
+        "Product Management",
+        "AI & Automation",
+        "Data Analytics",
+        "Salesforce & Agentforce",
+        "Python & SQL",
+        "Market Research & Competitive Analysis"
       ],
       experience: [
-        "Reliance Jio - AI Developer",
-        "Startups - Various roles",
-        "Research Labs - AI Research",
-        "Cloud Platforms - Development"
-      ]
+        "Salesforce - Software Engineer (Asset Management, Business Technology)",
+        "Salesforce - Summer Analyst Intern (Global Enterprise Operations)",
+        "SRM Films - Product Analytics & Insights Intern"
+      ],
+      education: [
+        "Carnegie Mellon University - MISM, Business Intelligence & Data Analytics (2025–2026)",
+        "G. Narayanamma Institute of Technology and Science - B.E. Information Technology, GPA 9.29/10 (2019–2023)"
+      ],
+      certifications: [
+        "Salesforce AI Associate",
+        "Salesforce Advanced Admin",
+        "Salesforce App Builder",
+        "Wharton School - AI for Business",
+        "Salesforce Ranger (82,000+ Trailhead points)"
+      ],
+      funFact: "I was one of only three students to receive a Merit Certificate of Excellence at GNITS for academic excellence and extracurricular leadership!"
     };
 
     return JSON.stringify({
       success: true,
       data: meInfo,
-      message: "Here's information about Rakshith!"
+      message: "Here's information about Sumreen!"
     });
   },
-}); 
+});

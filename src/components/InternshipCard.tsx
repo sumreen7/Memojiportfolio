@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 
 const InternshipCard = () => {
   const openMail = () => {
-    window.open('mailto:dharmappa.r@northeastern.edu', '_blank');
+    window.open('mailto:sumreenf@andrew.cmu.edu', '_blank');
   };
   const router = useRouter();
 
@@ -24,13 +24,13 @@ const InternshipCard = () => {
           <div className="bg-muted h-16 w-16 overflow-hidden rounded-full shadow-md">
             <img
               src="/avatar-landing.png"
-              alt="Rakshith's avatar"
+              alt="Sumreen's avatar"
               className="h-full w-full object-cover"
             />
           </div>
           <div>
             <h2 className="text-foreground text-2xl font-semibold">
-              Rakshith Dharmappa
+              Fathima Sumreen
             </h2>
             <p className="text-muted-foreground text-sm">
               Internship Application
@@ -57,7 +57,7 @@ const InternshipCard = () => {
           <div>
             <p className="text-foreground text-sm font-medium">Duration</p>
             <p className="text-muted-foreground text-sm">
-              6 months – starting September 2025 (fall 2025)
+              3 months – starting May 2026 (summer 2026)
             </p>
           </div>
         </div>
